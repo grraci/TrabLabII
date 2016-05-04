@@ -2,6 +2,10 @@ import static java.lang.System.out;
 
 import java.util.Scanner;
 
+import utils.Utils;
+
+import views.MenuController;
+
 /**
  * AppMain.java 
  * E' a classe main do programa.
@@ -15,6 +19,7 @@ public class AppMain {
 
 	public static void main(String[] args) {
 			Utils util = new Utils();
+			MenuController menu = new MenuController();
 			scanner = new Scanner(System.in);
 			
 			while(true){
@@ -25,7 +30,7 @@ public class AppMain {
 								"Digite Relatorio para visualizar os relatorios"+
 								"\nOu digite Sair para fechar o programa.");
 			 String acao = scanner.nextLine();
-			 util.defineAcao(acao.toLowerCase());
+			 menu.defineAcao(acao.toLowerCase());
 			
 			 
 

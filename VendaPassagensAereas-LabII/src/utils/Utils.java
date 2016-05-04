@@ -1,3 +1,4 @@
+package utils;
 import java.util.*;
 
 import static java.lang.System.out;
@@ -25,7 +26,7 @@ public class Utils {
 	public ArrayList<Voo> listaVoo;
 	public ArrayList<Venda> listaVenda;
 
-	public static int increaseId = 0;
+	//public static int increaseId = 0;
 
 	public Utils() {
 		scanner = new Scanner(System.in);
@@ -50,12 +51,12 @@ public class Utils {
 		listaAviao.add(a2);
 		listaAviao.add(a3);
 
-		Voo v1 = new Voo(1, a1, "Munique", "Porto Alegre", "14:00"); v1.setIdVoo(increaseId++);
-		Voo v2 = new Voo(2, a1, "Porto Alegre", "Munique", "16:00"); v2.setIdVoo(increaseId++);
-		Voo v3 = new Voo(3, a2, "Porto Alegre", "Sao Paulo", "14:00"); v3.setIdVoo(increaseId++);
-		Voo v4 = new Voo(4, a3, "Sao Paulo", "Porto Alegre", "10:00"); v4.setIdVoo(increaseId++);
-		Voo v5 = new Voo(5, a1, "Sao Paulo", "Londres", "19:00"); v5.setIdVoo(increaseId++);
-		Voo v6 = new Voo(6, a3, "Madrid", "Sao Paulo", "18:00"); v6.setIdVoo(increaseId++);
+		Voo v1 = new Voo(1, a1, "Munique", "Porto Alegre", "14:00");
+		Voo v2 = new Voo(2, a1, "Porto Alegre", "Munique", "16:00");
+		Voo v3 = new Voo(3, a2, "Porto Alegre", "Sao Paulo", "14:00");
+		Voo v4 = new Voo(4, a3, "Sao Paulo", "Porto Alegre", "10:00");
+		Voo v5 = new Voo(5, a1, "Sao Paulo", "Londres", "19:00");
+		Voo v6 = new Voo(6, a3, "Madrid", "Sao Paulo", "18:00"); 
 
 		listaVoo.add(v1);
 		listaVoo.add(v2);
@@ -97,6 +98,10 @@ public class Utils {
 				return true;
 			}
 		return false;
+	}
+	
+	public void listaCliente(){
+		System.out.println(listaCliente);
 	}
 
 	/**
@@ -392,32 +397,5 @@ public class Utils {
 	 * Switch com opcoes do menu
 	 * @param acao A opcao escolhida pelo usuario.
 	 */
-
-	public void defineAcao(String acao) {
-		switch(acao){
-		case "cliente":
-			addCliente();
-			removeCliente();
-			break;
-		case "aviao":
-			addAviao();
-			break;
-		case "voo":
-			addVoo();
-			break;
-		case "venda":
-			addVenda();
-			break;
-		case "relatorio":
-			relatorio();
-			break;
-		case "sair":
-			System.exit(0);
-			break;
-		default:
-			out.println("Opcao invalida. Digite novamente.");
-			break;
-		}
-	}
 
 }

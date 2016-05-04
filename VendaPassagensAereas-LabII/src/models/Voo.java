@@ -9,7 +9,7 @@ import models.Aviao;
 
 public class Voo {
 
-	private int idVoo;
+	private int codVoo;
 	private Aviao aviao;
 	private String origem;
 	private String destino;
@@ -17,17 +17,37 @@ public class Voo {
 
 	/**	 
 	 * Inicializa um objeto Voo. Dados: aviao, origem, destino e horario.
+	 * @param codVoo Codigo do voo.
 	 * @param aviao Do objeto Aviao.
 	 * @param origem A origem do voo.
 	 * @param destino O destino do voo.
 	 * @param horario O horario do voo.
 	 */
 
-	public Voo(Aviao aviao, String origem, String destino, String horario) {
+	public Voo(int codVoo, Aviao aviao, String origem, String destino, String horario) {
+		this.codVoo = codVoo;
 		this.aviao = aviao;
 		this.origem = origem;
 		this.destino = destino;
 		this.horario = horario;
+	}
+	
+	/**
+	 * Retorna o codigo do voo.
+	 * @return O codigo do voo.
+	 */
+
+	public int getCodVoo() {
+		return codVoo;
+	}
+	
+	/**
+	 * Permite a configuracao do codigo do Voo .
+	 * @param codVoo O codigo do voo.
+	 */
+
+	public void setCodVoo(int codVoo) {
+		this.codVoo = codVoo;
 	}
 
 	/**
@@ -108,7 +128,7 @@ public class Voo {
 	 */
 
 	public String toString() {
-		StringBuilder tmp = new StringBuilder("Voo ID:"+this.idVoo+". Origem: "+this.origem+". Destino: "+this.destino+" -- "+this.aviao);
+		StringBuilder tmp = new StringBuilder("Voo ID:"+this.codVoo+". Origem: "+this.origem+". Destino: "+this.destino+" -- "+this.aviao);
 		return tmp.toString();
 	}
 	
@@ -118,7 +138,7 @@ public class Voo {
 	 */
 
 	public int getIdVoo() {
-		return idVoo;
+		return codVoo;
 	}
 	
 	/**
@@ -127,7 +147,7 @@ public class Voo {
 	 */
 
 	public void setIdVoo(int idVoo) {
-		this.idVoo = idVoo;
+		this.codVoo = idVoo;
 	}
 
 }
