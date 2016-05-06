@@ -31,7 +31,7 @@ public class Venda {
 	public Cliente getCliente() {
 		return cliente;
 	}
-	
+
 	/**
 	 * Permite a configuracao do objeto Cliente.
 	 * @param cliente O objeto Cliente.
@@ -49,7 +49,7 @@ public class Venda {
 	public Voo getVoo() {
 		return voo;
 	}
-	
+
 	/**
 	 * Permite a configuracao do objeto Voo.
 	 * @param voo O objeto Voo.

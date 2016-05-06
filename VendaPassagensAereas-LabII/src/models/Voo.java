@@ -31,7 +31,7 @@ public class Voo {
 		this.destino = destino;
 		this.horario = horario;
 	}
-	
+
 	/**
 	 * Retorna o codigo do voo.
 	 * @return O codigo do voo.
@@ -40,7 +40,7 @@ public class Voo {
 	public int getCodVoo() {
 		return codVoo;
 	}
-	
+
 	/**
 	 * Permite a configuracao do codigo do Voo .
 	 * @param codVoo O codigo do voo.
@@ -58,7 +58,7 @@ public class Voo {
 	public Aviao getAviao() {
 		return aviao;
 	}
-	
+
 	/**
 	 * Permite a configuracao do objeto aviao.
 	 * @param aviao O objeto Aviao.
@@ -76,7 +76,7 @@ public class Voo {
 	public String getOrigem() {
 		return origem;
 	}
-	
+
 	/**
 	 * Permite a configuracao da origem do voo.
 	 * @param origem A origem do voo.
@@ -94,7 +94,7 @@ public class Voo {
 	public String getDestino() {
 		return destino;
 	}
-	
+
 	/**
 	 * Permite a configuracao do destino do voo.
 	 * @param destino O destino do voo.
@@ -112,7 +112,7 @@ public class Voo {
 	public String getHorario() {
 		return horario;
 	}
-	
+
 	/**
 	 * Permite a configuracao do horario do voo.
 	 * @param horario O horario do voo.
@@ -128,10 +128,10 @@ public class Voo {
 	 */
 
 	public String toString() {
-		StringBuilder tmp = new StringBuilder("Voo ID:"+this.codVoo+". Origem: "+this.origem+". Destino: "+this.destino+" -- "+this.aviao);
+		StringBuilder tmp = new StringBuilder("Voo ID:"+this.codVoo+". Origem: "+this.origem+". Destino: "+this.destino+" -- "+this.aviao+"\n");
 		return tmp.toString();
 	}
-	
+
 	/**
 	 * Retorna o IdVoo do objeto Voo.
 	 * @return O IdVoo do objeto Voo.
@@ -140,7 +140,7 @@ public class Voo {
 	public int getIdVoo() {
 		return codVoo;
 	}
-	
+
 	/**
 	 * Permite a configuracao do IdVoo do objeto Voo.
 	 * @param IdVoo O IdVoo do objeto Voo.

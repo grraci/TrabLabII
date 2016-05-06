@@ -6,13 +6,24 @@ import java.util.Scanner;
 
 import utils.Utils;
 
+/**
+ * Classe que controla os menus
+ * @author Graci
+ *
+ */
+
 public class MenuController {
-	
+
 	public Utils util;
 	public MenuController(){
 		util = new Utils();
 	}
 	private static Scanner scanner;
+
+	/**
+	 *Metodo que chama os metodos ligados ao cliente 
+	 * @param acao
+	 */
 	
 	public void menuCliente(String acao){
 		switch (acao){
@@ -27,53 +38,54 @@ public class MenuController {
 			break;
 		}
 	}
-		
+	
+	/**
+	 *Metodo que chama os metodos ligados ao aviao 
+	 * @param acao
+	 */
+	
 	public void menuAviao(String acao){
 		switch (acao){
 		case "adicionar":
 			util.addAviao();
 			break;
 		case "listar":
-			util.listaCliente();
+			util.listaAviao();
 			break;
 		case "remover":
-			util.removeCliente();
+			util.removeAviao();
 			break;
 		}
 	}
+
+	/**
+	 *Metodo que chama os metodos ligados ao voo 
+	 * @param acao
+	 */
 	
 	public void menuVoo(String acao){
 		switch (acao){
 		case "adicionar":
-			util.addAviao();
+			util.addVoo();
 			break;
 		case "listar":
-			util.listaCliente();
+			util.listaVoo();
 			break;
 		case "remover":
-			util.removeCliente();
+			util.removeVoo();
 			break;
 		}
 	}
-	
-	public void menuVenda(String acao){
-		switch (acao){
-		case "adicionar":
-			util.addAviao();
-			break;
-		case "listar":
-			util.listaCliente();
-			break;
-		case "remover":
-			util.removeCliente();
-			break;
-		}
-	}
-	
+
+	/**
+	 * Switch com opcoes do menu
+	 * @param acao A opcao escolhida pelo usuario.
+	 */
+
 	public void defineAcao(String acao) {
 
 		scanner = new Scanner(System.in);
-		
+
 		switch(acao){
 		case "cliente":
 			out.println("Opções: \nDigite Adicionar para cadastrar um cliente\n"+					
@@ -97,11 +109,7 @@ public class MenuController {
 			menuVoo(acao);
 			break;
 		case "venda":
-			out.println("Opções: \nDigite Adicionar para cadastrar um venda\n"+					
-					"Digite Listar para exibir a lista de vendas cadastradas\n"+
-					"Digite Remover para remover uma venda");
-			acao = scanner.nextLine();
-			menuVenda(acao);
+			util.addVenda();
 			break;
 		case "relatorio":
 			util.relatorio();

@@ -9,7 +9,7 @@ import models.Voo;
 
 /**
  * Classe Utils, contem todos os metodos para incrementar o array dos 4 Beans (Aviao, Voo, Venda e Cliente)
- * Contem todos os metodos de validacao de todas as opcoes do menu (que tambem esta contido nesta classe)
+ * Contem todos os metodos de validacao e os metodos chamados pelo menu
  * @author Graci
  *
  */
@@ -99,7 +99,11 @@ public class Utils {
 			}
 		return false;
 	}
-	
+
+	/**
+	 * Metodo que lista os clientes cadastrados
+	 */
+
 	public void listaCliente(){
 		System.out.println(listaCliente);
 	}
@@ -146,7 +150,12 @@ public class Utils {
 			}
 		}
 	}
-	
+
+	/**
+	 *Metodo que remove o cliente do sistema
+	 *@param rg O rg do cliente 
+	 */
+
 	public void removeCliente(){
 		boolean isOver = false;
 		while(!isOver){
@@ -154,7 +163,7 @@ public class Utils {
 				scanner = new Scanner(System.in);
 				out.println("Digite o RG do cliente que deseja remover:");
 				String rg = scanner.nextLine();
-				
+
 				if(verificaString(rg) && clienteExiste(rg)) {
 					listaCliente.remove(this.cliente);
 					out.println("Cliente RG: "+rg+" removido com sucesso.");
@@ -167,6 +176,20 @@ public class Utils {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * Metodo que busca o cliente na lista
+	 * @param rg O RG do cliente.
+	 */
+
+	public Cliente retornaCliente(String rg) {
+		for(int i = 0; i < listaCliente.size(); i++) {
+			if(rg.equals(listaCliente.get(i).getRg())) {
+				return listaCliente.get(i);
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -196,6 +219,14 @@ public class Utils {
 	}
 
 	/**
+	 * Metodo que lista os avioes cadastrados
+	 */
+
+	public void listaAviao(){
+		System.out.println(listaAviao);
+	}
+
+	/**
 	 * Metodo que adiciona o aviao na lista.
 	 * @param nome O nome do aviao.
 	 * @param codigo O codigo do aviao.
@@ -217,7 +248,7 @@ public class Utils {
 				out.println("Digite o codigo do aviao:"); 
 				int codigo = scanner.nextInt();
 				//Avisar se nao for int ou se for nulo
-				
+
 				out.println("Digite a quantidade de assentos:");
 				int qtdAssentos = scanner.nextInt();
 				//Avisar se nao for int ou se for nulo
@@ -237,6 +268,33 @@ public class Utils {
 	}
 
 	/**
+	 *Metodo que remove o aviao do sistema
+	 *@param codigo O codigo do aviao 
+	 */
+
+	public void removeAviao(){
+		boolean isOver = false;
+		while(!isOver){
+			try{
+				scanner = new Scanner(System.in);
+				out.println("Digite o codigo do aviao que deseja remover:");
+				int codigo = scanner.nextInt();
+
+				if(aviaoExiste(codigo)) {
+					listaAviao.remove(this.aviao);
+					out.println("Aviao codigo "+codigo+" removido com sucesso.");
+					isOver = true;
+				} else {
+					System.err.println("Codigo "+codigo+" nao cadastrado no sistema. Digite novamente:");
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
 	 * Metodo que busca o voo na lista.
 	 * @param codVoo O codigo do voo.
 	 */
@@ -250,12 +308,32 @@ public class Utils {
 	}
 
 	/**
+	 * Metodo que verifica se o voo ja existe na lista.
+	 * @param codigo O codigo do voo.
+	 */
+
+	public boolean vooExiste(int codigo) {
+		for(Voo x : listaVoo)
+			if(x.getCodVoo() == codigo) {
+				return true;
+			}
+		return false;
+	}
+
+	/**
+	 * Metodo que lista os avioes cadastrados
+	 */
+
+	public void listaVoo(){
+		System.out.println(listaVoo);
+	}
+	/**
 	 * Metodo que adiciona o voo na lista.
 	 * @param 
 	 */
 
 	public void addVoo() {
-		boolean isOver = false; //arrumar
+		boolean isOver = false; //sem validacao
 		while(!isOver){
 			try{
 				scanner = new Scanner(System.in);
@@ -289,18 +367,32 @@ public class Utils {
 	}
 
 	/**
-	 * Metodo que busca o cliente na lista
-	 * @param rg O RG do cliente.
+	 *Metodo que remove o voo do sistema
+	 *@param codigo O codigo do voo 
 	 */
 
-	public Cliente retornaCliente(String rg) {
-		for(int i = 0; i < listaCliente.size(); i++) {
-			if(rg.equals(listaCliente.get(i).getRg())) {
-				return listaCliente.get(i);
+	public void removeVoo(){
+		boolean isOver = false;
+		while(!isOver){
+			try{
+				scanner = new Scanner(System.in);
+				out.println("Digite o codigo do voo que deseja remover:");
+				int codigo = scanner.nextInt();
+
+				if(vooExiste(codigo)) {
+					listaVoo.remove(this.voo);
+					out.println("Voo codigo: "+codigo+" removido com sucesso.");
+					isOver = true;
+				} else {
+					System.err.println("Codigo "+codigo+" nao cadastrado no sistema. Digite novamente:");
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
 			}
 		}
-		return null;
 	}
+
 
 	/**
 	 * Metodo que conclui a venda da passagem.
@@ -313,10 +405,10 @@ public class Utils {
 		while(!isOver){
 			try{
 				scanner = new Scanner(System.in);
-				out.println("digite o rg do cliente:");
+				out.println("Digite o rg do cliente:");
 				String rg = scanner.nextLine();
 				this.cliente = retornaCliente(rg);
-				out.println("digite o id do voo:");
+				out.println("Digite o id do voo:");
 				int idVoo = scanner.nextInt();
 				this.voo = retornaVoo(idVoo);
 
@@ -327,7 +419,7 @@ public class Utils {
 					if(verificaString(rg) && this.voo != null && this.cliente != null) {
 						this.venda = new Venda(this.cliente, this.voo);
 						listaVenda.add(this.venda);	
-						out.println("venda efetuada!");
+						out.println("Venda efetuada.");
 						isOver = true;
 					} else {
 						out.println("Venda invalida, tente novamente.");
@@ -341,9 +433,9 @@ public class Utils {
 		}
 	}
 
+
 	/**
-	 * Metodo que verifica se o cliente ja existe na lista, atraves do RG
-	 * @param rg O RG do cliente.
+	 * Metodo que mostra os relatorios de vendas
 	 */
 
 	public void relatorio() {
@@ -373,8 +465,9 @@ public class Utils {
 	}
 
 	/**
-	 * Metodo que verifica se o cliente ja existe na lista, atraves do RG
-	 * @param rg O RG do cliente.
+	 * Metodo que ordena os dados para serem demonstrados no metodo relatorio
+	 * @param mapa O hashmap com as vendas.
+	 * @param direction 
 	 */
 
 	public void ordenador(HashMap<String, Integer> mapa, String direction) {
@@ -392,10 +485,5 @@ public class Utils {
 					out.println(direction+": " + entry.getKey().toString() + " quantidade de voos: " + entry.getValue());
 		}
 	}
-
-	/**
-	 * Switch com opcoes do menu
-	 * @param acao A opcao escolhida pelo usuario.
-	 */
 
 }
